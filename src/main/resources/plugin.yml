@@ -1,0 +1,6 @@
+name: RDSacks
+version: '${project.version}'
+main: org.systemdev.mc.rdsacks.RDSacks
+api-version: 1.19
+prefix: RDSacks
+authors: [ systemdev_ ]
