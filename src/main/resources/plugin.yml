@@ -4,3 +4,10 @@ main: org.systemdev.mc.rdsacks.RDSacks
 api-version: 1.19
 prefix: RDSacks
 authors: [ systemdev_ ]
+commands:
+  sacks-give:
+    usage: sacks-give <sack_name>
+    permission: rdsacks.give
+  sacks-reload:
+    usage: sacks-reload
+    permission: rdsacks.reload

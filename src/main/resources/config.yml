@@ -1,0 +1,16 @@
+init_sacks:
+  - "mining_sack"
+items:
+  mining_sack:
+    name: "&aМешочек шахтёра"
+    material: IRON_INGOT
+    lore:
+      - ""
+      - "&a&lПКМ&f - открыть мешочек"
+    pickupMaterials:
+      - COBBLESTONE
+      - GRANITE
+
+messages:
+  configReloaded: "&aКонфигурация успешно перезагружена!"
+  noPermission: "&cУ вас нет прав для выполнения данной команды"
