@@ -10,10 +10,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.systemdev.mc.rdsacks.Config.Configuration;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 public class Utilities {
     public static NamespacedKey sackTypeKey = new NamespacedKey(RDSacks.getInstance(), "sackType");
@@ -32,5 +29,21 @@ public class Utilities {
         sackMeta.setLore(Configuration.GetSackLore("items." + sackName + ".lore"));
         sack.setItemMeta(sackMeta);
         player.getInventory().addItem(sack);
+    }
+
+    public static boolean findStringInList(List<String> list, String s) {
+        ArrayList<String> arrayList = (ArrayList<String>) list;
+        if(arrayList.contains(s)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void addItemByMaterial(ItemStack item, String material) {
+        ItemMeta itemMeta = item.getItemMeta();
+        PersistentDataContainer container = itemMeta.getPersistentDataContainer();
+        NamespacedKey materialKey = new NamespacedKey(RDSacks.getInstance(), material);
+        Integer oldCount = container.get(materialKey, PersistentDataType.INTEGER);
+        container.set(materialKey, PersistentDataType.INTEGER, oldCount + 1);
     }
 }
