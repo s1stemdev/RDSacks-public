@@ -3,7 +3,9 @@ init_sacks:
 items:
   mining_sack:
     name: "&aМешочек шахтёра"
-    material: IRON_INGOT
+    material: LEATHER_HORSE_ARMOR
+    custommodeldata: 10001
+    color: 0x777777
     lore:
       - ""
       - "&a&lПКМ&f - открыть мешочек"

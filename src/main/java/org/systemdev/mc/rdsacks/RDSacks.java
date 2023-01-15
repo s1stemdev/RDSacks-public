@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public final class RDSacks extends JavaPlugin {
 
-    private final Logger log = getLogger();
+    public final Logger log = getLogger();
     private static RDSacks instance;
 
     @Override

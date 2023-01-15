@@ -17,14 +17,17 @@ public class Configuration {
         String formatedString = s.replaceAll("&", "§");
         return formatedString;
     }
+    public static Integer getInt(String path) {
+        return RDSacks.getInstance().getConfig().getInt(path);
+    }
 
     public static List<String> GetSacks() {
         return RDSacks.getInstance().getConfig().getStringList("init_sacks");
     }
     public static List<String> GetSackLore(String sackName) {
-        return RDSacks.getInstance().getConfig().getStringList(sackName + ".lore");
+        return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".lore");
     }
     public static List<String> GetSackPickupMaterials(String sackName) {
-        return RDSacks.getInstance().getConfig().getStringList(sackName + ".pickupMaterials");
+        return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".pickupMaterials");
     }
 }
