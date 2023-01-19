@@ -42,11 +42,13 @@ public class Utilities {
         return list.contains(s);
     }
 
-    public static void addItemByMaterial(ItemStack item, String material) {
+    public static void addItemByMaterial(ItemStack item, String material, Integer amount) {
         ItemMeta itemMeta = item.getItemMeta();
         PersistentDataContainer container = itemMeta.getPersistentDataContainer();
         NamespacedKey materialKey = new NamespacedKey(RDSacks.getInstance(), material);
         Integer oldCount = container.get(materialKey, PersistentDataType.INTEGER);
-        container.set(materialKey, PersistentDataType.INTEGER, oldCount + 1);
+        container.set(materialKey, PersistentDataType.INTEGER, oldCount + amount);
+        item.setItemMeta(itemMeta);
     }
+
 }

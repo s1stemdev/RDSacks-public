@@ -8,6 +8,7 @@ import java.util.List;
 public class Configuration {
 
 
+
     public static void reloadConfig() {
         RDSacks.getInstance().reloadConfig();
     }
@@ -17,17 +18,12 @@ public class Configuration {
         String formatedString = s.replaceAll("&", "§");
         return formatedString;
     }
-    public static Integer getInt(String path) {
-        return RDSacks.getInstance().getConfig().getInt(path);
-    }
 
-    public static List<String> GetSacks() {
-        return RDSacks.getInstance().getConfig().getStringList("init_sacks");
-    }
-    public static List<String> GetSackLore(String sackName) {
-        return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".lore");
-    }
-    public static List<String> GetSackPickupMaterials(String sackName) {
-        return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".pickupMaterials");
-    }
+
+    public static Integer getInt(String path) { return RDSacks.getInstance().getConfig().getInt(path); }
+    public static List<String> GetSacks() { return RDSacks.getInstance().getConfig().getStringList("init_sacks"); }
+    public static List<String> GetSackLore(String sackName) { return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".lore");}
+    public static List<String> GetDecoItems() { return RDSacks.getInstance().getConfig().getStringList("sack_menu.inventory");}
+    public static List<String> GetStrList(String path) { return RDSacks.getInstance().getConfig().getStringList(path);}
+    public static List<String> GetSackPickupMaterials(String sackName) { return RDSacks.getInstance().getConfig().getStringList("items." + sackName + ".pickupMaterials"); }
 }

@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -16,9 +17,8 @@ import java.util.EventListener;
 public class PickupEvent implements Listener {
 
     @EventHandler
-    public void onPickup(EntityPickupItemEvent e) {
-        if(!(e.getEntity() instanceof Player)) return;
-        Player player = ((Player) e.getEntity());
+    public void onPickup(PlayerPickupItemEvent e) {
+        Player player = e.getPlayer();
         ItemStack sack = player.getInventory().getItemInOffHand();
         if(sack.getType().isEmpty() || sack.getItemMeta() == null) return;
         PersistentDataContainer container = sack.getItemMeta().getPersistentDataContainer();
@@ -26,8 +26,10 @@ public class PickupEvent implements Listener {
         String sackType = container.get(Utilities.sackTypeKey, PersistentDataType.STRING);
         RDSacks.getInstance().log.info(sackType);
         if(Utilities.findStringInList(Configuration.GetSackPickupMaterials(sackType), String.valueOf(e.getItem().getItemStack().getType()))) {
-            player.sendMessage("1");
-            e.getItem().getItemStack().setAmount(0);
+            Utilities.addItemByMaterial(sack, String.valueOf(e.getItem().getItemStack().getType()), e.getItem().getItemStack().getAmount());
+            player.sendMessage("1" + e.getItem().getItemStack().getType() + e.getItem().getItemStack().getAmount());
+            e.setCancelled(true);
+            e.getItem().remove();
         }
     }
 }

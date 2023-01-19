@@ -1,5 +1,31 @@
 init_sacks:
   - "mining_sack"
+sack_menu:
+  inventory:
+    - "ooooooooo"
+    - "o       o"
+    - "o       o"
+    - "o       o"
+    - "o       o"
+    - "ooooooooo"
+  material_item:
+    lore:
+      - "&fКоличество: &a${count}/${max}"
+      - "&a&lНажмите&f, чтобы достать из мешочка"
+    custommodeldata: 0
+  decoration:
+    o:
+      name: ""
+      material: BLUE_STAINED_GLASS_PANE
+      lore:
+        - ""
+      custommodeldata: 0
+  collect_all:
+    name: "&a&lПолучить всё"
+    material: CHEST
+    lore:
+      - "&a&lНажмите&f, чтобы получить всё"
+    custommodeldata: 0
 items:
   mining_sack:
     name: "&aМешочек шахтёра"
