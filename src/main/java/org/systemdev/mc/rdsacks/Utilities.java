@@ -18,22 +18,24 @@ import java.util.List;
 
 public class Utilities {
     public static NamespacedKey sackTypeKey = new NamespacedKey(RDSacks.getInstance(), "sackType");
+    public static NamespacedKey maxItems = new NamespacedKey(RDSacks.getInstance(), "maxItems");
 
-    public static void giveSack(String sackName, Player player) {
+    public static void giveSack(String sackName, Integer max, Player player) {
         ItemStack sack = new ItemStack(Material.valueOf(Configuration.getString("items." + sackName + ".material")));
         LeatherArmorMeta sackMeta = (LeatherArmorMeta) sack.getItemMeta();
         PersistentDataContainer container = sackMeta.getPersistentDataContainer();
         sackMeta.setDisplayName(Configuration.getString("items." + sackName + ".name"));
         sackMeta.setCustomModelData(Configuration.getInt("items." + sackName + ".custommodeldata"));
+        sackMeta.setLore(Configuration.GetSackLore(sackName));
         int color = Integer.parseInt(Configuration.getString("items." + sackName + ".color"));
-        sackMeta.setColor(Color.fromBGR(color));
+        sackMeta.setColor(Color.fromRGB(color));
         List<String> sackMaterials = Configuration.GetSackPickupMaterials(sackName);
         for (String sackMaterial : sackMaterials) {
             NamespacedKey sackMaterialKey = new NamespacedKey(RDSacks.getInstance(), sackMaterial);
             container.set(sackMaterialKey, PersistentDataType.INTEGER, 0);
         }
         container.set(sackTypeKey, PersistentDataType.STRING, sackName);
-        sackMeta.setLore(Configuration.GetSackLore("items." + sackName + ".lore"));
+        container.set(maxItems, PersistentDataType.INTEGER, max);
         sack.setItemMeta(sackMeta);
         player.getInventory().addItem(sack);
     }

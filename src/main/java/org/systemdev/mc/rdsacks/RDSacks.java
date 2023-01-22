@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.systemdev.mc.rdsacks.Commands.GiveCommand;
 import org.systemdev.mc.rdsacks.Commands.ReloadCommand;
+import org.systemdev.mc.rdsacks.Events.InventoryClick;
 import org.systemdev.mc.rdsacks.Events.OpenInventory;
 import org.systemdev.mc.rdsacks.Events.PickupEvent;
 
@@ -24,6 +25,7 @@ public final class RDSacks extends JavaPlugin {
         getCommand("sacks-reload").setExecutor(new ReloadCommand());
         Bukkit.getPluginManager().registerEvents(new PickupEvent(), this);
         Bukkit.getPluginManager().registerEvents(new OpenInventory(), this);
+        Bukkit.getPluginManager().registerEvents(new InventoryClick(), this);
     }
 
     @Override

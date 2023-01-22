@@ -17,7 +17,8 @@ public class OpenInventory implements Listener {
         Player p = e.getPlayer();
         if(p.getInventory().getItemInMainHand().getType().isEmpty()) return;
         if(e.getAction().isRightClick()) {
-            if (p.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer().has(Utilities.sackTypeKey)) InventoryUtils.openSackMenu(p,p.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer().get(Utilities.sackTypeKey, PersistentDataType.STRING));
+            if (p.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer().has(Utilities.sackTypeKey))
+                InventoryUtils.openSackMenu(p, p.getInventory().getItemInMainHand(), p.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer().get(Utilities.sackTypeKey, PersistentDataType.STRING));
         }
     }
 }

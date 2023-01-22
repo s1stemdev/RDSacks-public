@@ -16,7 +16,7 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Utilities.giveSack(args[0], RDSacks.getInstance().getServer().getPlayer(args[1]));
+        Utilities.giveSack(args[0], Integer.valueOf(args[1]), RDSacks.getInstance().getServer().getPlayer(args[2]));
         return true;
     }
 

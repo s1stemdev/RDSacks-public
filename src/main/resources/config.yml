@@ -1,22 +1,29 @@
 init_sacks:
   - "mining_sack"
+  - "farming_sack"
 sack_menu:
   inventory:
     - "ooooooooo"
-    - "o       o"
-    - "o       o"
-    - "o       o"
-    - "o       o"
+    - "c       c"
+    - "c       c"
+    - "c       c"
+    - "c       c"
     - "ooooooooo"
   material_item:
     lore:
-      - "&fКоличество: &a${count}/${max}"
+      - "&fКоличество: &a{count}/{max}"
       - "&a&lНажмите&f, чтобы достать из мешочка"
     custommodeldata: 0
   decoration:
     o:
       name: ""
       material: BLUE_STAINED_GLASS_PANE
+      lore:
+        - ""
+      custommodeldata: 0
+    c:
+      name: ""
+      material: GREEN_STAINED_GLASS_PANE
       lore:
         - ""
       custommodeldata: 0
@@ -30,7 +37,7 @@ items:
   mining_sack:
     name: "&aМешочек шахтёра"
     material: LEATHER_HORSE_ARMOR
-    custommodeldata: 10001
+    custommodeldata: 10002
     color: 0x777777
     lore:
       - ""
@@ -38,7 +45,22 @@ items:
     pickupMaterials:
       - COBBLESTONE
       - GRANITE
-
+      - DIORITE
+  farming_sack:
+    name: "&eМешочек фермера"
+    material: LEATHER_HORSE_ARMOR
+    custommodeldata: 10002
+    color: 0xc47e19
+    lore:
+      - ""
+      - "&a&lПКМ&f - открыть мешочек"
+    pickupMaterials:
+      - WHEAT
+      - CARROT
+      - POTATO
+      - BEETROOT
+      - COCOA_BEANS
+      - NETHER_WART
 messages:
   configReloaded: "&aКонфигурация успешно перезагружена!"
   noPermission: "&cУ вас нет прав для выполнения данной команды"
